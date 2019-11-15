@@ -4,7 +4,8 @@ package hw7;
  * 11/18/19
  * @author Jack Vines, Jeremy Brothers
  *
+ * Graph class stores representation of graph and contains methods for performing DFS
  */
-public interface Graph {
+public class Graph implements Graphable {
 
 }

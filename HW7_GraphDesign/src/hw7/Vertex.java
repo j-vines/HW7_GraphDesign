@@ -4,16 +4,18 @@ package hw7;
  * 11/18/19
  * @author Jack Vines, Jeremy Brothers
  *
+ * Vertex container class to be used by Graph.java
  */
 public class Vertex {
 	
+	/* color constants*/
 	static final int WHITE = 0;
 	static final int GREY = 1;
 	static final int BLACK = 2;
 	
 	private int color;
-	private int discovered;
-	private int finished;
+	private int discovered; //discovery timestamp
+	private int finished; //finished timestamp
 	private int key;
 
 	public Vertex(int key) {
