@@ -8,4 +8,7 @@ package hw7;
  */
 public interface Graphable {
 
+	public void DFS();
+	
+	public void DFSVisit(Vertex v);
 }

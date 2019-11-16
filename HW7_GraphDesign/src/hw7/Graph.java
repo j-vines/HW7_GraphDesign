@@ -8,4 +8,17 @@ package hw7;
  */
 public class Graph implements Graphable {
 
+	
+	// 1) need array of vertex objects
+	// 2) need array of linked lists for adjacency list representation of graph (think this might be easier than adj matrix but idk)
+	// 3) need variable for time
+	
+	public void DFS() {
+		return;
+	}
+	
+	public void DFSVisit(Vertex v) {
+		return;
+	}
+	
 }

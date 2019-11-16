@@ -16,13 +16,13 @@ public class Vertex {
 	private int color;
 	private int discovered; //discovery timestamp
 	private int finished; //finished timestamp
-	private int key;
+	private Vertex parent;
 
 	public Vertex(int key) {
 		color = WHITE;
 		discovered = 0;
 		finished = 0;
-		this.key = key;
+		parent = null;
 	}
 	
 	public void setColor(int color) {
@@ -49,7 +49,12 @@ public class Vertex {
 		return finished;
 	}
 	
-	public int getKey() {
-		return key;
+	public void setParent(Vertex p) {
+		parent = p;
 	}
+	
+	public Vertex getParent() {
+		return parent;
+	}
+	
 }
