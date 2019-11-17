@@ -26,6 +26,8 @@ public class Graph<E> implements Graphable {
 		
 		System.out.println(adjanceyList.size());
 		
+		// Loop through the matrix. If an index in the matrix is 1, then a neighbor 
+		// exists. If true, add a vertex to the current list.
 		for(int i = 0; i < inputMatrix.length; i++) {
 			for (int j = 0; j < inputMatrix[i].length; j++) {
 				if(inputMatrix[i][j] == 1) {
@@ -35,6 +37,8 @@ public class Graph<E> implements Graphable {
 			}
 		}
 		
+		// Print the adjacency list. each line should be a list of vertices.
+		// a blank line indicates that a node has no neighbors.
 		for(LinkedList<Vertex> list : adjanceyList) {
 			for(int i = 0; i < list.size(); i++) {
 				Vertex vert = list.get(i);
