@@ -1,4 +1,3 @@
-package hw7;
 /**
  * CS333 Homework 7: Graph Design
  * 11/18/19
@@ -7,29 +6,27 @@ package hw7;
  * Vertex container class to be used by Graph.java
  */
 public class Vertex {
-	
-	/* color constants*/
-	static final int WHITE = 0;
-	static final int GREY = 1;
-	static final int BLACK = 2;
-	
-	private int color;
-	private int discovered; //discovery timestamp
-	private int finished; //finished timestamp
-	private Vertex parent;
+	private Colors color;
+	private int key;
+	private int discovered; //discovery time stamp
+	private int finished; //finished time stamp
+	private Vertex edge;
+	private boolean infinite;
 
 	public Vertex(int key) {
-		color = WHITE;
+		color = Colors.White;
+		this.key = key;
 		discovered = 0;
 		finished = 0;
-		parent = null;
+		edge = null;
+		infinite = true;
 	}
 	
-	public void setColor(int color) {
+	public void setColor(Colors color) {
 		this.color = color;
 	}
 	
-	public int getColor() {
+	public Colors getColor() {
 		return color;
 	}
 	
@@ -50,11 +47,12 @@ public class Vertex {
 	}
 	
 	public void setParent(Vertex p) {
-		parent = p;
+		edge = p;
 	}
 	
 	public Vertex getParent() {
-		return parent;
+		return edge;
 	}
 	
+	public int getKey() { return key; }
 }
