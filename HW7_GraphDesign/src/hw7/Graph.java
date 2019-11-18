@@ -12,39 +12,48 @@ public class Graph implements Graphable {
 
 	private int time;
 	private Vertex vertex;
+	private Vertex[] vertArray = null; //an array of the vertices in the graph
 	private LinkedList<Vertex> neighborList = null;
-	private LinkedList<LinkedList<Vertex>> adjanceyList = null;
+	private LinkedList<LinkedList<Vertex>> adjacencyList = null;
 	
 	public Graph(int[][] inputMatrix) {
-		adjanceyList = new LinkedList<LinkedList<Vertex>>();
+		adjacencyList = new LinkedList<LinkedList<Vertex>>();
+		vertArray = new Vertex[inputMatrix.length];
+		//init array of vertices
+		for(int i = 0; i < vertArray.length; i++) {
+			vertArray[i] = new Vertex(i);
+		}
 		
 		// Create a list of lists of vertices.
 		// TODO : ensure that the width of each inputMatrix[x] is equal?
 		for(int i = 0; i < inputMatrix[0].length; i++) {
-			adjanceyList.add(new LinkedList<Vertex>());
+			adjacencyList.add(new LinkedList<Vertex>());
 		}
 		
-		System.out.println(adjanceyList.size());
+		System.out.println(adjacencyList.size());
 		
 		// Loop through the matrix. If an index in the matrix is 1, then a neighbor 
 		// exists. If true, add a vertex to the current list.
 		for(int i = 0; i < inputMatrix.length; i++) {
 			for (int j = 0; j < inputMatrix[i].length; j++) {
 				if(inputMatrix[i][j] == 1) {
-					LinkedList<Vertex> currentList = adjanceyList.get(i);
-					currentList.add(new Vertex(j));
+					LinkedList<Vertex> currentList = adjacencyList.get(i);
+					currentList.add(vertArray[j]); //add corresponding vertex from vertArray
 				}
 			}
 		}
 		
 		// Print the adjacency list. each line should be a list of vertices.
 		// a blank line indicates that a node has no neighbors.
-		for(LinkedList<Vertex> list : adjanceyList) {
+		int vertNum = 0;
+		for(LinkedList<Vertex> list : adjacencyList) {
+			System.out.print(vertNum + ": ");
 			for(int i = 0; i < list.size(); i++) {
 				Vertex vert = list.get(i);
 				System.out.print(vert.getKey() + " ");
 			}
 			System.out.println();
+			vertNum++;
 		}
 	}
 	
@@ -53,7 +62,7 @@ public class Graph implements Graphable {
 	
 	@Override
 	public void DFS() {
-		for(LinkedList<Vertex> vertList: adjanceyList) {
+		for(LinkedList<Vertex> vertList: adjacencyList) {
 			time = 0;
 			for(Vertex u : vertList) {
 				if(u.getColor() == Colors.White) {

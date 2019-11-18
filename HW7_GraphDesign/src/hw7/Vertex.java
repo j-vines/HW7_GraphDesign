@@ -14,8 +14,8 @@ public class Vertex {
 	private Vertex parent;
 
 	public Vertex(int key) {
-		color = Colors.White;
 		this.key = key;
+		color = Colors.White;
 		discovered = 0;
 		finished = 0;
 		parent = null;
