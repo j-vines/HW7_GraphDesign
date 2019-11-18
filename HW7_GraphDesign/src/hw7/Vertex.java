@@ -57,4 +57,9 @@ public class Vertex {
 	public int getKey() { return key; }
 	
 	public void setInfinite(boolean value) { infinite = value; }
+	
+	@Override
+	public String toString() {
+		return "Vertex " + key;
+	}
 }

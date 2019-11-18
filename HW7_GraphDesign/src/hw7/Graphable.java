@@ -9,7 +9,18 @@ import java.util.LinkedList;
  */
 public interface Graphable {
 
+	/**
+	 * Performs a depth first search on a graph
+	 */
 	public void DFS();
 	
+	/**
+	 * Recursive helper method for DFS()
+	 * "Visits" every vertex in the graph and then immediately visits all of that vertex's neighbors
+	 * When a vertex is visited, its discovery time and parent pointer are set
+	 * After all of that vertex's neighbors have been visited, its finished time is set
+	 * @param neighborList - list of a given vertex's neighbors
+	 * @param u - the current vertex being visited
+	 */
 	public void DFSVisit(LinkedList<Vertex> neighborList, Vertex u);
 }

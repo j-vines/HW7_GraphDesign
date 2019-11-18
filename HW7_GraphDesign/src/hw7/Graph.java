@@ -42,28 +42,12 @@ public class Graph implements Graphable {
 				}
 			}
 		}
-		
-		// Print the adjacency list. each line should be a list of vertices.
-		// a blank line indicates that a node has no neighbors.
-		int vertNum = 0;
-		for(LinkedList<Vertex> list : adjacencyList) {
-			System.out.print(vertNum + ": ");
-			for(int i = 0; i < list.size(); i++) {
-				Vertex vert = list.get(i);
-				System.out.print(vert.getKey() + " ");
-			}
-			System.out.println();
-			vertNum++;
-		}
 	}
-	
-	// 1) need array of vertex objects
-	// 2) need array of linked lists for adjacency list representation of graph (think this might be easier than adj matrix but idk)
 	
 	@Override
 	public void DFS() {
+		time = 0;
 		for(LinkedList<Vertex> vertList: adjacencyList) {
-			time = 0;
 			for(Vertex u : vertList) {
 				if(u.getColor() == Colors.White) {
 					DFSVisit(vertList, u);
@@ -76,6 +60,7 @@ public class Graph implements Graphable {
 	@Override
 	public void DFSVisit(LinkedList<Vertex> neighborList, Vertex u) {
 		time += 1;
+		u.setDiscovered(time);
 		u.setColor(Colors.Grey);
 		for(Vertex v : neighborList) {
 			if(v.getColor() == Colors.White) {
@@ -86,6 +71,32 @@ public class Graph implements Graphable {
 		u.setColor(Colors.Black);
 		time += 1;
 		u.setFinished(time);
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		//vertices info
+		for(int i = 0; i < vertArray.length; i++) {
+			sb.append("Vertex " + i + ":\n");
+			sb.append("\tParent: " + vertArray[i].getParent());
+			sb.append("\n\tColor: " + vertArray[i].getColor());
+			sb.append("\n\tDiscovered: " + vertArray[i].getDiscovered());
+			sb.append("\n\tFinished: " + vertArray[i].getFinished() + "\n");
+		}
+		sb.append("\nAdjacency List: \n");
+		//edges info
+		int vertNum = 0;
+		for(LinkedList<Vertex> list : adjacencyList) {
+			sb.append(vertNum + ": ");
+			for(int i = 0; i < list.size(); i++) {
+				Vertex vert = list.get(i);
+				sb.append(vert.getKey() + " ");
+			}
+			sb.append("\n");
+			vertNum++;
+		}
+		return sb.toString();
 	}
 	
 }
