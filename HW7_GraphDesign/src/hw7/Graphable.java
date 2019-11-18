@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 /**
  * CS333 Homework 7: Graph Design
  * 11/18/19
@@ -9,5 +11,5 @@ public interface Graphable {
 
 	public void DFS();
 	
-	public void DFSVisit(Vertex v);
+	public void DFSVisit(LinkedList<Vertex> neighborList, Vertex u);
 }

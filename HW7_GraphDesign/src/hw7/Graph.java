@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * Graph class stores representation of graph and contains methods for performing DFS
  * @param <E>
  */
-public class Graph<E> implements Graphable {
+public class Graph implements Graphable {
 
 	private int time;
 	private Vertex vertex;
@@ -46,19 +46,37 @@ public class Graph<E> implements Graphable {
 			}
 			System.out.println();
 		}
-		
-		time = 0;
 	}
 	
 	// 1) need array of vertex objects
 	// 2) need array of linked lists for adjacency list representation of graph (think this might be easier than adj matrix but idk)
 	
+	@Override
 	public void DFS() {
+		for(LinkedList<Vertex> vertList: adjanceyList) {
+			time = 0;
+			for(Vertex u : vertList) {
+				if(u.getColor() == Colors.White) {
+					DFSVisit(vertList, u);
+				}
+			}
+		}
 		return;
 	}
 	
-	public void DFSVisit(Vertex v) {
-		return;
+	@Override
+	public void DFSVisit(LinkedList<Vertex> neighborList, Vertex u) {
+		time += 1;
+		u.setColor(Colors.Grey);
+		for(Vertex v : neighborList) {
+			if(v.getColor() == Colors.White) {
+				v.setParent(u);
+				DFSVisit(neighborList, v);
+			}
+		}
+		u.setColor(Colors.Black);
+		time += 1;
+		u.setFinished(time);
 	}
 	
 }

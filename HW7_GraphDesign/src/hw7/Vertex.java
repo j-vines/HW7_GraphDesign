@@ -10,15 +10,15 @@ public class Vertex {
 	private int key;
 	private int discovered; //discovery time stamp
 	private int finished; //finished time stamp
-	private Vertex edge;
 	private boolean infinite;
+	private Vertex parent;
 
 	public Vertex(int key) {
 		color = Colors.White;
 		this.key = key;
 		discovered = 0;
 		finished = 0;
-		edge = null;
+		parent = null;
 		infinite = true;
 	}
 	
@@ -47,12 +47,14 @@ public class Vertex {
 	}
 	
 	public void setParent(Vertex p) {
-		edge = p;
+		parent = p;
 	}
 	
 	public Vertex getParent() {
-		return edge;
+		return parent;
 	}
 	
 	public int getKey() { return key; }
+	
+	public void setInfinite(boolean value) { infinite = value; }
 }
