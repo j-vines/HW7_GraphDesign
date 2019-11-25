@@ -11,13 +11,14 @@ import java.util.LinkedList;
 public class Graph implements Graphable {
 
 	private int time;
-	private Vertex vertex;
 	private Vertex[] vertArray = null; //an array of the vertices in the graph
-	private LinkedList<Vertex> neighborList = null;
-	private LinkedList<LinkedList<Vertex>> adjacencyList = null;
+	//private LinkedList<Vertex> neighborList = null;
+	//private LinkedList<LinkedList<Vertex>> adjacencyList = null;
+	private int[][] adjacencyMatrix;
 	
 	public Graph(int[][] inputMatrix) {
-		adjacencyList = new LinkedList<LinkedList<Vertex>>();
+		//adjacencyList = new LinkedList<LinkedList<Vertex>>();
+		adjacencyMatrix = inputMatrix;
 		vertArray = new Vertex[inputMatrix.length];
 		//init array of vertices
 		for(int i = 0; i < vertArray.length; i++) {
@@ -26,22 +27,22 @@ public class Graph implements Graphable {
 		
 		// Create a list of lists of vertices.
 		// TODO : ensure that the width of each inputMatrix[x] is equal?
-		for(int i = 0; i < inputMatrix[0].length; i++) {
+		/*for(int i = 0; i < inputMatrix[0].length; i++) {
 			adjacencyList.add(new LinkedList<Vertex>());
 		}
 		
-		System.out.println(adjacencyList.size());
+		System.out.println(adjacencyList.size());*/
 		
 		// Loop through the matrix. If an index in the matrix is 1, then a neighbor 
 		// exists. If true, add a vertex to the current list.
-		for(int i = 0; i < inputMatrix.length; i++) {
+		/*for(int i = 0; i < inputMatrix.length; i++) {
 			for (int j = 0; j < inputMatrix[i].length; j++) {
 				if(inputMatrix[i][j] == 1) {
-					LinkedList<Vertex> currentList = adjacencyList.get(i);
+					//LinkedList<Vertex> currentList = adjacencyList.get(i);
 					currentList.add(vertArray[j]); //add corresponding vertex from vertArray
 				}
 			}
-		}
+		}*/
 	}
 	
 	@Override
@@ -58,7 +59,7 @@ public class Graph implements Graphable {
 	}
 	
 	@Override
-	public void DFSVisit(LinkedList<Vertex> neighborList, Vertex u) {
+	private void DFSVisit(LinkedList<Vertex> neighborList, Vertex u) {
 		time += 1;
 		u.setDiscovered(time);
 		u.setColor(Colors.Grey);

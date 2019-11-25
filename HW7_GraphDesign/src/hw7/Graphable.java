@@ -22,5 +22,7 @@ public interface Graphable {
 	 * @param neighborList - list of a given vertex's neighbors
 	 * @param u - the current vertex being visited
 	 */
-	public void DFSVisit(LinkedList<Vertex> neighborList, Vertex u);
+	//private void DFSVisit(LinkedList<Vertex> neighborList, Vertex u);
+	
+	public String toString();
 }
