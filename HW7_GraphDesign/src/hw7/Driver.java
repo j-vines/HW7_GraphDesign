@@ -14,9 +14,9 @@ public class Driver {
 		};
 		
 		Graph graph = new Graph(adjacencyMatrix);
-		System.out.println(graph);
+		System.out.println(graph.toString());
 		graph.DFS();
-		System.out.println(graph);
+		System.out.println(graph.toString());
 	}
 
 }

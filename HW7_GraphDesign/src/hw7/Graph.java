@@ -10,94 +10,39 @@ import java.util.LinkedList;
  */
 public class Graph implements Graphable {
 
-	private int time;
-	private Vertex[] vertArray = null; //an array of the vertices in the graph
-	//private LinkedList<Vertex> neighborList = null;
-	//private LinkedList<LinkedList<Vertex>> adjacencyList = null;
-	private int[][] adjacencyMatrix;
+	private int time = 0;
+	private Vertex vertex = null;
+	private LinkedList<Vertex> adjanceyList[] = null;
 	
 	public Graph(int[][] inputMatrix) {
-		//adjacencyList = new LinkedList<LinkedList<Vertex>>();
-		adjacencyMatrix = inputMatrix;
-		vertArray = new Vertex[inputMatrix.length];
-		//init array of vertices
-		for(int i = 0; i < vertArray.length; i++) {
-			vertArray[i] = new Vertex(i);
-		}
-		
-		// Create a list of lists of vertices.
-		// TODO : ensure that the width of each inputMatrix[x] is equal?
-		/*for(int i = 0; i < inputMatrix[0].length; i++) {
-			adjacencyList.add(new LinkedList<Vertex>());
-		}
-		
-		System.out.println(adjacencyList.size());*/
-		
-		// Loop through the matrix. If an index in the matrix is 1, then a neighbor 
-		// exists. If true, add a vertex to the current list.
-		/*for(int i = 0; i < inputMatrix.length; i++) {
-			for (int j = 0; j < inputMatrix[i].length; j++) {
-				if(inputMatrix[i][j] == 1) {
-					//LinkedList<Vertex> currentList = adjacencyList.get(i);
-					currentList.add(vertArray[j]); //add corresponding vertex from vertArray
-				}
-			}
-		}*/
+
 	}
 	
+	/**
+	 * Performs a Depth First Search on an array of verticies
+	 */
 	@Override
 	public void DFS() {
-		time = 0;
-		for(LinkedList<Vertex> vertList: adjacencyList) {
-			for(Vertex u : vertList) {
-				if(u.getColor() == Colors.White) {
-					DFSVisit(vertList, u);
-				}
-			}
-		}
-		return;
+
 	}
 	
-	@Override
-	private void DFSVisit(LinkedList<Vertex> neighborList, Vertex u) {
-		time += 1;
-		u.setDiscovered(time);
-		u.setColor(Colors.Grey);
-		for(Vertex v : neighborList) {
-			if(v.getColor() == Colors.White) {
-				v.setParent(u);
-				DFSVisit(neighborList, v);
-			}
-		}
-		u.setColor(Colors.Black);
-		time += 1;
-		u.setFinished(time);
-	}
-	
+	/**
+	 * Takes the array of vertices from the DFS function and returns a string
+	 * of each nodes key.
+	 */
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		//vertices info
-		for(int i = 0; i < vertArray.length; i++) {
-			sb.append("Vertex " + i + ":\n");
-			sb.append("\tParent: " + vertArray[i].getParent());
-			sb.append("\n\tColor: " + vertArray[i].getColor());
-			sb.append("\n\tDiscovered: " + vertArray[i].getDiscovered());
-			sb.append("\n\tFinished: " + vertArray[i].getFinished() + "\n");
-		}
-		sb.append("\nAdjacency List: \n");
-		//edges info
-		int vertNum = 0;
-		for(LinkedList<Vertex> list : adjacencyList) {
-			sb.append(vertNum + ": ");
-			for(int i = 0; i < list.size(); i++) {
-				Vertex vert = list.get(i);
-				sb.append(vert.getKey() + " ");
-			}
-			sb.append("\n");
-			vertNum++;
-		}
-		return sb.toString();
+		return "";
+	}
+	
+	/*
+	 * This function visits the neighbors of the for the linked list passed it.
+	 * It checks the color of the neighbor. If it is white, a recursive call is performed
+	 * until the last list has no white neighbors. Once all the nodes have been visted the
+	 * DFS will be completed. 
+	 */
+	private void DFSVisit(LinkedList<Vertex> neighborList, Vertex u) {
+
 	}
 	
 }

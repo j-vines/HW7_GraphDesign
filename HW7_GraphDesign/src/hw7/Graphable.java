@@ -15,14 +15,8 @@ public interface Graphable {
 	public void DFS();
 	
 	/**
-	 * Recursive helper method for DFS()
-	 * "Visits" every vertex in the graph and then immediately visits all of that vertex's neighbors
-	 * When a vertex is visited, its discovery time and parent pointer are set
-	 * After all of that vertex's neighbors have been visited, its finished time is set
-	 * @param neighborList - list of a given vertex's neighbors
-	 * @param u - the current vertex being visited
+	 * A method that returns the result of a depth first search
+	 * @return (string) - an array of values returned from a depth first search.
 	 */
-	//private void DFSVisit(LinkedList<Vertex> neighborList, Vertex u);
-	
 	public String toString();
 }
