@@ -1,3 +1,4 @@
+
 /**
  * CS333 Homework 7: Graph Design
  * 11/18/19
@@ -7,19 +8,17 @@
  */
 public class Vertex {
 	private Colors color;
-	private int key;
+	private int val;
 	private int discovered; //discovery time stamp
 	private int finished; //finished time stamp
-	private boolean infinite;
 	private Vertex parent;
 
 	public Vertex(int key) {
-		this.key = key;
+		this.val = key;
 		color = Colors.White;
 		discovered = 0;
 		finished = 0;
 		parent = null;
-		infinite = true;
 	}
 	
 	public void setColor(Colors color) {
@@ -54,12 +53,10 @@ public class Vertex {
 		return parent;
 	}
 	
-	public int getKey() { return key; }
-	
-	public void setInfinite(boolean value) { infinite = value; }
+	public int getVal() { return val; }
 	
 	@Override
 	public String toString() {
-		return "Vertex: " + key;
+		return "Vertex: " + val;
 	}
 }

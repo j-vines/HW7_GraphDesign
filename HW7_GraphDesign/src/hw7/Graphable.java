@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 
 /**
  * CS333 Homework 7: Graph Design
