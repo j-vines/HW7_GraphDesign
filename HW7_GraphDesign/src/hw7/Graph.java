@@ -14,7 +14,7 @@ public class Graph implements Graphable {
 	private Vertex[] vertexArray;
 	
 	public Graph(int[][] inputMatrix) {
-		vertexArray = new Vertex[inputMatrix.length];
+		vertexArray = new Vertex[inputMatrix[0].length];
 	
 		for(int i = 0; i < vertexArray.length; i++) { //initialize array of vertices
 			vertexArray[i] = new Vertex(i);
